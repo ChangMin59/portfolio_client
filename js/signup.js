@@ -1,7 +1,9 @@
+import { API_URL } from "./config.js";
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('signup-form');
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const name = document.getElementById('name').value.trim();
@@ -49,17 +51,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!isValid) return;
 
-    // 저장
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    users.push({
-      name,
-      email,
-      password,
-      date: new Date().toISOString().slice(0, 10)
-    });
-    localStorage.setItem('users', JSON.stringify(users));
+    // ✅ 저장(fetch로 서버에 보내기)
+    try {
+      const response = await fetch(`${API_URL}/api/users`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ name, email, password })
+      });
 
-    alert('회원가입 성공! 로그인 페이지로 이동합니다.');
-    window.location.href = 'login.html';
+      const result = await response.json();
+      console.log(result);
+
+      if (result.success) {
+        alert('회원가입 성공! 로그인 페이지로 이동합니다.');
+        window.location.href = 'login.html';
+      } else {
+        alert(result.message || '회원가입에 실패했습니다.');
+      }
+    } catch (error) {
+      console.error('회원가입 실패:', error);
+      alert('서버 통신 중 오류가 발생했습니다.');
+    }
   });
 });
