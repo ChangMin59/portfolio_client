@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Developer Changmin | Reality Architect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script defer src="js/background.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="logo">
+        <a href="#hero">Home</a>
+      </div>
+      <nav class="nav-buttons">
+        <a href="signup.html" class="nav-btn">회원가입</a>
+        <a href="login.html" class="nav-btn">로그인</a>
+      </nav>
+    </div>
+  </header>
+
+<!-- Hero Section -->
+<section class="hero fullscreen" id="hero">
+  <div id="particles-js" class="particles-bg"></div>
+  <div class="glow-layer"></div>
+  <div class="container">
+    <h1 class="hero-title">AI로 현실을 설계하고<br>미래를 연결합니다</h1>
+    <p class="hero-subtitle typing">AI 시스템 설계자 이창민 | Developer of Intelligent Futures</p>
+    <a href="#about" class="btn-primary magnetic">프로필 보기</a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about fullscreen">
+  <canvas id="canvas-about" class="particles-bg"></canvas>
+  <div class="glow-layer"></div>
+  <div class="container about-grid">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>반복되는 일상 속에서 더 나은 선택을 할 수 있도록 데이터를 해석하고 지식을 연결하는 솔루션을 만듭니다. <strong>AI는 도구가 아닌 동반자</strong>라고 믿는 개발자, 이창민입니다.</p>
+      <p>과거에는 "어떻게 만들까"에 머물렀지만, 지금은 "왜 만들까"를 고민하는 개발자로 성장 중입니다.</p>
+      <p>우주를 탐험하듯 데이터와 AI의 무한한 가능성을 탐색합니다.</p>
+      <p><strong>학습 여정:</strong> Python → NumPy → Pandas → 딥러닝 → Pytorch → CV → NLP → FAISS → RAG → LangChain → Cloud</p>
+    </div>
+    <div class="about-image">
+      <img src="images/KakaoTalk_20250428_214022803.png" alt="About Changmin">
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills fullscreen">
+  <canvas id="canvas-skills" class="particles-bg"></canvas>
+  <div class="glow-layer"></div>
+  <div class="container">
+    <h3 class="section-title">기술 스택</h3>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <h4>🤖 머신러닝 · 딥러닝</h4>
+        <ul class="skill-details">
+          <li>CV, MLP, YOLOv8, 강화학습 기반 모델 구현</li>
+          <li>Scikit-learn을 활용한 분류/회귀/클러스터링 분석</li>
+          <li>사용자 행동 예측 및 소비 패턴 분석 프로젝트 적용</li>
+        </ul>
+      </div>
+
+      <div class="skill-item">
+        <h4>🧠 AI 프레임워크</h4>
+        <ul class="skill-details">
+          <li>PyTorch, TensorFlow, HuggingFace Transformers</li>
+          <li>LangChain + LlamaIndex 기반 RAG 챗봇 설계</li>
+          <li>LoRA 기반 LLM 파인튜닝 및 FAISS 최적화</li>
+        </ul>
+      </div>
+
+      <div class="skill-item">
+        <h4>🌐 백엔드 · 프론트엔드</h4>
+        <ul class="skill-details">
+          <li>HTML / CSS / JS 기능형 프로토타입 구현</li>
+        </ul>
+      </div>
+
+      <div class="skill-item">
+        <h4>🚀 DevOps · 협업 도구</h4>
+        <ul class="skill-details">
+          <li>Docker, GitHub Actions, Notion, W&B, Slack 기반 협업</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects fullscreen">
+  <canvas id="canvas-projects" class="particles-bg"></canvas>
+  <div class="glow-layer"></div>
+  <div class="container">
+    <h3 class="section-title">주요 프로젝트</h3>
+    <div class="projects-grid">
+      <div class="project-item">
+        <h4>📷 YOLO 객체 탐지 시스템</h4>
+        <ul class="project-details">
+          <li><strong>설명:</strong> 집 안 물건 위치를 실시간 탐색하는 YOLOv8 기반 솔루션</li>
+          <li><strong>기능:</strong> 웹캠 스트리밍, 좌표 출력, 객체 저장</li>
+          <li><strong>기술:</strong> YOLOv8, OpenCV, Python, ByteTrack</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <h4>🧠 GPT 카드 추천 챗봇</h4>
+        <ul class="project-details">
+          <li><strong>설명:</strong> LangChain + RAG + LLM 기반 혜택 추천 챗봇</li>
+          <li><strong>기능:</strong> 키워드 기반 추천, JSON 자동 분석</li>
+          <li><strong>기술:</strong> LangChain, Mistral 7B, LlamaIndex, FAISS, HuggingFace</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta fullscreen">
+  <canvas id="canvas-cta" class="particles-bg"></canvas>
+  <div class="glow-layer"></div>
+
+  <div class="container cta-container">
+    <h2 class="cta-title gradient-text">미래를 함께 설계할 준비가 되셨나요?</h2>
+
+    <div class="cta-contact-card">
+      <h3>📬 Contact Info</h3>
+      <ul class="cta-contact-list">
+        <li><span>📧 Email:</span> <a href="mailto:dy2ghk@naver.com">dy2ghk@naver.com</a></li>
+        <li><span>🐙 GitHub:</span> <a href="https://github.com/ChangMin59" target="_blank">github.com/ChangMin59</a></li>
+        <li><span>💼 LinkedIn:</span> <a href="https://linkedin.com/in/changmin-ai" target="_blank">linkedin.com/in/changmin-ai</a></li>
+      </ul>
+    </div>
+
+    <a href="mailto:changmin.ai@gmail.com" class="btn-primary magnetic">📮 프로젝트 제안하기</a>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-container">
+    <p class="footer-text">© 2025 Lee Changmin | Reality Architect</p>
+    <div class="social-icons">
+      <a href="https://github.com/ChangMin59" class="icon github" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/ChangMin59" class="icon linkedin" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

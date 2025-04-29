@@ -1,0 +1,42 @@
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대시보드 | Reality Architect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="js/dashboard.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-container">
+    <div class="logo">
+      <a href="index.html">Reality Architect</a>
+    </div>
+    <nav class="nav-buttons">
+      <span id="current-user" class="user-name"></span> <!-- 🔥 사용자 이름 표시 -->
+      <a href="#" id="logout-btn" class="nav-btn">로그아웃</a> <!-- 🔥 로그아웃 버튼 -->
+    </nav>
+  </div>
+</header>
+
+<section class="fullscreen">
+  <div class="container">
+    <h1>가입자 통계 대시보드</h1>
+
+    <!-- 🔥 현재 사용자 정보 카드 -->
+    <div class="user-card">
+      <h2>내 정보</h2>
+      <p><strong>이름:</strong> <span id="user-name"></span></p>
+      <p><strong>이메일:</strong> <span id="user-email"></span></p>
+      <p><strong>가입일:</strong> <span id="user-date"></span></p>
+    </div>
+
+    <canvas id="signupChart" width="400" height="400"></canvas>
+  </div>
+</section>
+
+</body>
+</html>
