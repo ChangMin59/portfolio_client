@@ -1,1 +1,1 @@
-window.API_URL = "https://portfolio-server-3bnc.onrender.com";
+export const API_URL = "https://portfolio-server-3bnc.onrender.com";

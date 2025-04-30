@@ -1,6 +1,10 @@
+import { API_URL } from "./config.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#signup-form").addEventListener("submit", async function (e) {
-    e.preventDefault(); // 기본 제출 방지
+  const form = document.querySelector("#signup-form");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
     const name = document.getElementById("name");
     const email = document.getElementById("email");
@@ -14,49 +18,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 초기화
     [name, email, password, confirmPassword].forEach((el) => el.classList.remove("input-error"));
-    [nameError, emailError, passwordError, confirmError].forEach((el) => el.textContent = "");
+    [nameError, emailError, passwordError, confirmError].forEach((el) => (el.textContent = ""));
 
-    // 🔍 유효성 검사
+    let hasError = false;
+
     if (name.value.trim().length < 2) {
       nameError.textContent = "이름은 2글자 이상이어야 합니다.";
       name.classList.add("input-error");
       name.focus();
-      return;
+      hasError = true;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.value.trim())) {
       emailError.textContent = "올바른 이메일 형식이 아닙니다.";
       email.classList.add("input-error");
-      email.focus();
-      return;
+      if (!hasError) email.focus();
+      hasError = true;
     }
 
     if (password.value.length < 7) {
       passwordError.textContent = "비밀번호는 7자 이상이어야 합니다.";
       password.classList.add("input-error");
-      password.focus();
-      return;
+      if (!hasError) password.focus();
+      hasError = true;
     }
 
     if (password.value !== confirmPassword.value) {
       confirmError.textContent = "비밀번호가 일치하지 않습니다.";
       confirmPassword.classList.add("input-error");
-      confirmPassword.focus();
-      return;
+      if (!hasError) confirmPassword.focus();
+      hasError = true;
     }
 
-    // 서버 전송
+    if (hasError) return;
+
     try {
-      const res = await fetch(`${window.API_URL}/api/users`, {
+      const res = await fetch(`${API_URL}/api/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
           name: name.value.trim(),
           email: email.value.trim(),
-          password: password.value
-        })
+          password: password.value,
+        }),
       });
 
       const result = await res.json();
