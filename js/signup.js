@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const res = await fetch(`${API_URL}/api/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify({
           name: name.value.trim(),
           email: email.value.trim(),
@@ -66,11 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const result = await res.json();
-      console.log(result);
 
       if (result.success) {
         alert("회원가입 성공! 로그인 페이지로 이동합니다.");
-        window.location.href = "login.html";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 100); // ✅ 렌더링 딜레이 방지용
       } else {
         alert(result.message || "회원가입 실패");
       }
