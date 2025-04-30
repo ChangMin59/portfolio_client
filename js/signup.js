@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#signup-form").addEventListener("submit", async function (e) {
-    e.preventDefault(); // 반드시 form 전송 막기
+    e.preventDefault(); // 기본 제출 방지
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirm-password").value;
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirm-password");
 
     const nameError = document.getElementById("name-error");
     const emailError = document.getElementById("email-error");
@@ -13,43 +13,53 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmError = document.getElementById("confirm-error");
 
     // 초기화
-    nameError.textContent = "";
-    emailError.textContent = "";
-    passwordError.textContent = "";
-    confirmError.textContent = "";
+    [name, email, password, confirmPassword].forEach((el) => el.classList.remove("input-error"));
+    [nameError, emailError, passwordError, confirmError].forEach((el) => el.textContent = "");
 
-    // 유효성 검사
-    if (name.length < 2) {
+    // 🔍 유효성 검사
+    if (name.value.trim().length < 2) {
       nameError.textContent = "이름은 2글자 이상이어야 합니다.";
+      name.classList.add("input-error");
+      name.focus();
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(email.value.trim())) {
       emailError.textContent = "올바른 이메일 형식이 아닙니다.";
+      email.classList.add("input-error");
+      email.focus();
       return;
     }
 
-    if (password.length < 7) {
+    if (password.value.length < 7) {
       passwordError.textContent = "비밀번호는 7자 이상이어야 합니다.";
+      password.classList.add("input-error");
+      password.focus();
       return;
     }
 
-    if (password !== confirmPassword) {
+    if (password.value !== confirmPassword.value) {
       confirmError.textContent = "비밀번호가 일치하지 않습니다.";
+      confirmPassword.classList.add("input-error");
+      confirmPassword.focus();
       return;
     }
 
-    // 서버 요청
+    // 서버 전송
     try {
-      const response = await fetch(`${window.API_URL}/api/users`, {
+      const res = await fetch(`${window.API_URL}/api/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ name, email, password })
+        body: JSON.stringify({
+          name: name.value.trim(),
+          email: email.value.trim(),
+          password: password.value
+        })
       });
 
-      const result = await response.json();
+      const result = await res.json();
       console.log(result);
 
       if (result.success) {
@@ -58,9 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         alert(result.message || "회원가입 실패");
       }
-    } catch (error) {
-      console.error("회원가입 오류:", error);
-      alert("서버 오류가 발생했습니다.");
+    } catch (err) {
+      console.error("회원가입 오류:", err);
+      alert("서버 통신 중 오류가 발생했습니다.");
     }
   });
 });
