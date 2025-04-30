@@ -12,9 +12,15 @@ document.getElementById('login-form').addEventListener('submit', async function(
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ email, password }),
-      credentials: "include"
+      credentials: "include", // ✅ 세션 공유 필수
+      body: JSON.stringify({ email, password })
     });
+
+    if (!response.ok) {
+      // HTTP 에러 상태 방어
+      const errorText = await response.text();
+      throw new Error(`HTTP 오류 상태: ${response.status} \n${errorText}`);
+    }
 
     const result = await response.json();
     console.log(result);
@@ -23,10 +29,10 @@ document.getElementById('login-form').addEventListener('submit', async function(
       alert('로그인 성공');
       window.location.href = 'dashboard.html';
     } else {
-      alert('이메일 또는 비밀번호가 잘못되었습니다.');
+      alert(result.message || '이메일 또는 비밀번호가 잘못되었습니다.');
     }
   } catch (error) {
     console.error('로그인 요청 실패:', error);
-    alert('로그인 중 오류가 발생했습니다.');
+    alert('로그인 중 오류가 발생했습니다. 관리자에게 문의하세요.');
   }
 });
