@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -5,6 +6,7 @@
   <title>회원가입 | Reality Architect</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/config.js"></script>
   <script defer src="js/signup.js"></script>
 </head>
 <body>
@@ -20,26 +22,26 @@
     </div>
   </header>
 
-<section class="fullscreen center">
-  <div class="form-container">
-    <h1>회원가입</h1>
-    <form id="signup-form" novalidate>
-      <input type="text" id="name" placeholder="이름 (2글자 이상)">
-      <p class="error-message" id="name-error"></p>
-    
-      <input type="email" id="email" placeholder="이메일 형식">
-      <p class="error-message" id="email-error"></p>
-    
-      <input type="password" id="password" placeholder="비밀번호 (7자 이상)">
-      <p class="error-message" id="password-error"></p>
-    
-      <input type="password" id="confirm-password" placeholder="비밀번호 확인">
-      <p class="error-message" id="confirm-error"></p>
-    
-      <button type="submit" class="btn-primary">가입하기</button>
-    </form>
-    <p>이미 계정이 있으신가요? <a href="login.html">로그인하기</a></p>
-  </div>
-</section>
+  <section class="fullscreen center">
+    <div class="form-container">
+      <h1>회원가입</h1>
+      <form id="signup-form" novalidate>
+        <input type="text" name="name" id="name" placeholder="이름 (2글자 이상)" required>
+        <p class="error-message" id="name-error"></p>
+
+        <input type="email" name="email" id="email" placeholder="이메일 형식" required>
+        <p class="error-message" id="email-error"></p>
+
+        <input type="password" name="password" id="password" placeholder="비밀번호 (7자 이상)" required>
+        <p class="error-message" id="password-error"></p>
+
+        <input type="password" id="confirm-password" placeholder="비밀번호 확인" required>
+        <p class="error-message" id="confirm-error"></p>
+
+        <button type="submit" class="btn-primary">가입하기</button>
+      </form>
+      <p>이미 계정이 있으신가요? <a href="login.html">로그인하기</a></p>
+    </div>
+  </section>
 </body>
 </html>
