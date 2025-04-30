@@ -21,8 +21,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
     const response = await fetch(`${API_URL}/api/users/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include", // 쿠키 기반 세션 유지 필수
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password }), 
     });
 
     if (!response.ok) {
@@ -33,7 +32,9 @@ document.getElementById("login-form").addEventListener("submit", async function 
     const result = await response.json();
     console.log(result);
 
-    if (result.success) {
+    if (result.success && result.user) {
+      // ✅ localStorage에 사용자 정보 저장
+      localStorage.setItem("user", JSON.stringify(result.user));
       alert("로그인 성공");
       window.location.href = "dashboard.html";
     } else {
