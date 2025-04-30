@@ -33,13 +33,14 @@ document.getElementById("login-form").addEventListener("submit", async function 
     console.log("✅ 로그인 응답:", result);
 
     if (result.success && result.user) {
+      // 사용자 정보 저장
       localStorage.setItem("user", JSON.stringify(result.user));
-      alert("로그인 성공");
 
-      // ✅ GitHub Pages에서 정확한 경로로 리디렉션
+      // ✅ GitHub Pages에서 안정적인 리디렉션 (alert 분리)
       setTimeout(() => {
-        window.location.href = "https://changmin59.github.io/portfolio_client/dashboard.html";
-      }, 100);
+        alert("로그인 성공");
+        window.location.replace("https://changmin59.github.io/portfolio_client/dashboard.html");
+      }, 50);
     } else {
       alert(result.message || "이메일 또는 비밀번호가 잘못되었습니다.");
     }
