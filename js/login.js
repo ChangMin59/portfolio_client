@@ -21,7 +21,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
     const response = await fetch(`${API_URL}/api/users/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }), 
+      body: JSON.stringify({ email, password })
     });
 
     if (!response.ok) {
@@ -30,13 +30,16 @@ document.getElementById("login-form").addEventListener("submit", async function 
     }
 
     const result = await response.json();
-    console.log(result);
+    console.log("✅ 로그인 응답:", result);
 
     if (result.success && result.user) {
-      // ✅ localStorage에 사용자 정보 저장
       localStorage.setItem("user", JSON.stringify(result.user));
       alert("로그인 성공");
-      window.location.href = "dashboard.html";
+
+      // ✅ GitHub Pages에서 정확한 경로로 리디렉션
+      setTimeout(() => {
+        window.location.href = "https://changmin59.github.io/portfolio_client/dashboard.html";
+      }, 100);
     } else {
       alert(result.message || "이메일 또는 비밀번호가 잘못되었습니다.");
     }
