@@ -1,7 +1,7 @@
 # Portfolio Client
 
 이 프로젝트는 **개인 포트폴리오 및 자기소개 웹페이지**로,  
-프론트엔드 기술을 활용하여 제작된 정적 웹 애플리케이션입니다.  
+프론트엔드 기술을 활용하여 제작된 웹 페이지입니다.  
 
 - **Backend (`portfolio_server`)** 와 REST API 연동  
 - GitHub Pages를 통해 배포  
@@ -13,7 +13,7 @@
 
 ## ⚙️ Tech Stack
 - **Frontend**: HTML5, CSS3, SCSS  
-- **JavaScript**: ES6+, DOM 제어, Fetch API  
+- **JavaScript**: DOM 제어, Fetch API  
 - **UI/UX**:  
   - Canvas 기반 인터랙션 (Particles, Stars, Node Network, Aurora)  
   - GSAP ScrollTrigger 애니메이션 적용  
