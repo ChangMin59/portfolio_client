@@ -6,16 +6,17 @@ GitHub Pages를 통해 정적 웹사이트로 배포할 수 있습니다.
 ---
 
 ## 📂 프로젝트 구조
-📦 portfolio_client
-┣ 📂 css # 스타일시트 (SCSS 컴파일 결과)
-┣ 📂 scss # SCSS 원본 파일 (다크톤 레이아웃, 반응형 포함)
-┣ 📂 js # 자바스크립트 로직 (폼 검증, 데이터 전송, 애니메이션)
-┣ 📂 images # 웹페이지에 사용되는 이미지 리소스
-┣ 📜 index.html # 메인 페이지 (Hero, About, Skills, Projects, CTA 섹션)
-┣ 📜 signup.html # 회원가입 화면 (입력값 유효성 검사 → API 전송)
-┣ 📜 login.html # 로그인 화면 (이메일/비밀번호 인증)
-┣ 📜 dashboard.html # 사용자 대시보드 (로그인 후 사용자 정보 표시)
-┗ 📜 README.md # 프로젝트 설명 문서
+
+- **portfolio_client/**
+  - **css/** : 스타일시트 (SCSS 컴파일 결과)
+  - **scss/** : SCSS 원본 파일 (다크톤 레이아웃, 반응형 포함)
+  - **js/** : 자바스크립트 로직 (폼 검증, 데이터 전송, 애니메이션)
+  - **images/** : 웹페이지에 사용되는 이미지 리소스
+  - **index.html** : 메인 페이지 (Hero, About, Skills, Projects, CTA 섹션)
+  - **signup.html** : 회원가입 화면 (입력값 유효성 검사 → API 전송)
+  - **login.html** : 로그인 화면 (이메일/비밀번호 인증)
+  - **dashboard.html** : 사용자 대시보드 (로그인 후 사용자 정보 표시)
+  - **README.md** : 프로젝트 설명 문서
 
 ---
 
